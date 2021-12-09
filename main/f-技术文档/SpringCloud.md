@@ -6,6 +6,8 @@
 
 ## Introduction
 
+**老版Spring Cloud**
+
 概括而言，springcloud的五大组件包括Netflix Eurek，Netflix Ribbon，Netflix Hystrix，Netflix Zuul和Spring Cloud Config。五个组件分别对应（1）服务发现（2）客服端负载均衡（3）断路器（4）服务网关和（5）分布式配置。各组件分工有别，协调统一。
 
 - Spring Boot构建应用程序
@@ -19,6 +21,10 @@
 - Spring Cloud Sleuth和Open Zipkin来实现日志关联、日志聚合和跟踪等常见日志记录模式。
 
 Spring Cloud集成了各种微服务功能组件，并基于SpringBoot实现了这些组件的自动装配，从而提供了良好的开箱即用体验。
+
+**新版Spring Cloud：**
+
+Spring Cloud 为开发者提供了快速构建分布式系统中一些常见模式的工具（例如配置管理、服务发现、断路器、智能路由、微代理、控制总线、一次性令牌、全局锁、领导选举、分布式会话、集群状态）。分布式系统的协调导致了样板模式，使用 Spring Cloud 开发人员可以快速建立实现这些模式的服务和应用程序。它们将适用于任何分布式环境，包括开发人员自己的笔记本电脑、裸机数据中心和托管平台（如 Cloud Foundry）。
 
 ## Spring Cloud
 

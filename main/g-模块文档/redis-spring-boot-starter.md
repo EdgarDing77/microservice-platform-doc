@@ -1,10 +1,10 @@
-# Redis-实现
+# redis-spring-boot-starter
 
 [toc]
 
-## 实现说明
+## Introduction
 
-> 针对djj-redis-spring-boot-starter通用逻辑操作的说明。
+针对djj-redis-spring-boot-starter通用逻辑操作的说明。
 
 ### 目录结构
 
@@ -107,6 +107,8 @@ djj:
 ```
 
 #### Redis锁
+
+其具体参考[分布式锁]()
 
 ```Java
 @ConditionalOnClass(RedissonClient.class)

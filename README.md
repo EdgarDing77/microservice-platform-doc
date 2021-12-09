@@ -14,9 +14,14 @@
 - other - 相关知识
 - images - 图片、思维导图等
 
-
-
 ## 使用说明
+
+几个必要模块：
+
+- djj-gateway
+- djj-uaa(User Account and Authentication，用户账户和认证)
+
+
 
 项目编译：`mvn clean package -Dmaven.test.skip=true`
 
@@ -24,14 +29,11 @@ Nacos控制台启动：`sh bin/startup.sh -m standalone`
 
 Sentinel控制台启动：`java -jar -Dserver.port=6999 sentinel-dashboard.jar`
 
-## 配置说明
+Redis控制台启动：redis-server
 
 
 
-## 难点记录
 
-- 分布式ID生成器解决方案
-- 
 
 
 
@@ -39,4 +41,3 @@ Sentinel控制台启动：`java -jar -Dserver.port=6999 sentinel-dashboard.jar`
 
 banner.txt logo来源：https://devops.datenkollektiv.de/banner.txt/index.html
 
-Feign：http://www.wangqingzheng.com/huaweiyun/63/274363.html

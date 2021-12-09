@@ -1,8 +1,12 @@
-# Redis-详细
+# Redis
+
+## Introduction
+
+Redis 是一种开源（BSD 许可）、内存中数据结构存储，用作数据库、缓存和消息代理。Redis 提供了数据结构，例如字符串、散列、列表、集合、带有范围查询的排序集合、位图、超级日志、地理空间索引和流。Redis 内置复制、Lua 脚本、LRU 驱逐、事务和不同级别的磁盘持久化，并通过 Redis Sentinel 和 Redis Cluster 自动分区提供高可用性。
 
 ## 数据类型
 
-## 基本数据类型实现
+### 基本数据类型实现
 
 redis有五种基本数据结构：字符串、hash、set、zset、list（暴露给外部的接口）
 
