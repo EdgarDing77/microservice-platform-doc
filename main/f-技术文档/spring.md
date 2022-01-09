@@ -133,7 +133,46 @@ public class LoggingAspect {
 
 - @Transactional：使用AOP时，被装配的Bean最好自己能清清楚楚地知道自己被安排了。例如，Spring提供的`@Transactional`就是一个非常好的例子。如果我们自己写的Bean希望在一个数据库事务中被调用，就标注上`@Transactional`。
 
+## 常见注解
 
+### @Transactional
+
+添加位置：
+
+1. 接口实现类 或 接口方法上 而不是接口类中
+2. 访问权限：public的方法才起作用。Spring AOP的本质决定（**本质跟AOP调用有关：在事务代理对象中有判断代理的方法必须是public修饰，否则返回null**）。
+
+系统设计：将标签放置在需要进行事务管理的方法上，而不是放在所有接口实现类上：只读的接口就不需要事务管理，由于配置了@Transactional就需要AOP拦截及事务的处理，可能影响系统性能。
+
+错误使用：
+
+> 1.接口中A、B两个方法，A无@Transactional标签，B有，上层通过A间接调用B，此时事务不生效。
+>
+> 2.接口中异常（运行时异常）被捕获而没有被抛出。
+>   默认配置下，spring 只有在抛出的异常为运行时 unchecked 异常时才回滚该事务，
+>   也就是抛出的异常为RuntimeException 的子类(Errors也会导致事务回滚)，
+>   而抛出 checked 异常则不会导致事务回滚 。可通过 @Transactional rollbackFor进行配置。
+>
+> 3.多线程下事务管理因为线程不属于 spring 托管，故线程不能够默认使用 spring 的事务,也不能获取spring 注入的 bean 。
+>   在被 spring 声明式事务管理的方法内开启多线程，多线程内的方法不被事务控制。
+>   一个使用了@Transactional 的方法，如果方法内包含多线程的使用，方法内部出现异常，不会回滚线程中调用方法的事务。
+
+@Transactional 实质是使用了 JDBC 的事务来进行事务控制的
+@Transactional 基于 Spring 的动态代理的机制
+
+> @Transactional 实现原理：
+>
+> 1) 事务开始时，通过AOP机制，生成一个代理connection对象，
+>    并将其放入 DataSource 实例的某个与 DataSourceTransactionManager 相关的某处容器中。
+>    在接下来的整个事务中，客户代码都应该使用该 connection 连接数据库，
+>    执行所有数据库命令。
+>    [不使用该 connection 连接数据库执行的数据库命令，在本事务回滚的时候得不到回滚]
+>     （物理连接 connection 逻辑上新建一个会话session；
+>    DataSource 与 TransactionManager 配置相同的数据源）
+>
+> 2) 事务结束时，回滚在第1步骤中得到的代理 connection 对象上执行的数据库命令，
+>    然后关闭该代理 connection 对象。
+>     （事务结束后，回滚操作不会对已执行完毕的SQL操作命令起作用）
 
 ## Spel
 

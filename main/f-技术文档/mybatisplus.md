@@ -24,8 +24,6 @@
 - @TableLogic：表字段逻辑处理注解（逻辑删除）
 - @Version：乐观锁注解
 
-
-
 ## ORM层实现
 
 ### 自动填充功能
@@ -326,8 +324,6 @@ boolean saveOrUpdateBatch(Collection<T> entityList, int batchSize);
 |      int      |   batchSize   |           插入批次数量           |
 
 
-
-`
 
 ### 条件构造器
 

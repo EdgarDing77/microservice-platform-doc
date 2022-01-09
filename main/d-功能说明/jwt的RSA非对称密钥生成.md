@@ -1,5 +1,21 @@
 # jwt的RSA非对称密钥生成
 
+## JWT说明
+
+「What」jwt全称 JSON Web Token。这个实现方式不用管如何进行存储（内存或磁盘），因为它可以把相关信息数据编码存放在令牌里。JwtTokenStore 不会保存任何数据，但是它在转换令牌值以及授权信息方面与 DefaultTokenServices 所扮演的角色是一样的。
+
+### JWT结构
+
+JWT 是由三段信息构成的，第一段为头部（Header），第二段为载荷（Payload)，第三段为签名（Signature）。每一段内容都是一个 JSON 对象，将每一段 JSON 对象采用 BASE64 编码，将编码后的内容用。链接一起就构成了 JWT 字符串。如下：
+
+```
+header.payload.signature
+```
+
+
+
+
+
 ## 生成密钥文件
 
 使用JDK自带的keytool工具，执行后会在当前目录生成djj_secret.jks（.jks文件是Java中的密钥管理库）。
@@ -82,3 +98,8 @@ FVcW/cr2tdO5v+/cPPZywrvK+3GmC05lK6T5
 ```
 
 public key就是公钥部分了，直接创建一个pubkey.txt文件复制进去即可。
+
+## Reference
+
+- https://jwt.io/
+- https://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html

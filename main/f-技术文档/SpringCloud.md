@@ -207,7 +207,7 @@ public class DynamicRouteConfig {
      * Nacos实现方式
      */
     @Configuration
-    @ConditionalOnProperty(prefix = "djj.gateway.dynamicRoute", name = "dataType", havingValue = "nacos", matchIfMissing = true)
+    @ConditionalOnProperty(prefix = "djj.gateway.dynamicRoute", name = "type", havingValue = "nacos", matchIfMissing = true)
     public class NacosDynamicRoute {
         @Autowired
         private NacosConfigProperties nacosConfigProperties;
@@ -398,3 +398,4 @@ response_type对应的身份验证方式：
 
 ## Reference
 
+- https://spring.io/projects/spring-cloud-gateway
